@@ -1,0 +1,102 @@
+<html>
+  <header>
+    <style>
+      :root {
+        --fc-small-font-size: 0.75rem;
+        --fc-page-bg-color: #fff;
+        --fc-neutral-bg-color: rgba(208, 208, 208, 0.3);
+        --fc-neutral-text-color: #808080;
+        --fc-border-color: #ddd;
+
+        --fc-button-text-color: #ffffff;
+        --fc-button-bg-color: #940101;
+        --fc-button-border-color: #940101;
+        --fc-button-hover-bg-color: #fdf8ee;
+        --fc-button-hover-border-color: #940101;
+        --fc-button-active-bg-color: #940101;
+        --fc-button-active-border-color: #940101;
+
+        --fc-event-bg-color: #940101;
+        --fc-event-border-color: #940101;
+        --fc-event-text-color: #fff;
+        --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+
+        --fc-more-link-bg-color: #d0d0d0;
+        --fc-more-link-text-color: inherit;
+
+        --fc-event-resizer-thickness: 8px;
+        --fc-event-resizer-dot-total-width: 8px;
+        --fc-event-resizer-dot-border-width: 1px;
+
+        --fc-non-business-color: rgba(215, 215, 215, 0.3);
+        --fc-bg-event-color: #940101;
+        --fc-bg-event-opacity: 0.3;
+        --fc-highlight-color: #ede5d5;
+        --fc-today-bg-color: #ede5d5;
+        --fc-now-indicator-color: #940101;
+      }
+
+      #calendar {
+        font-family: "Georgia";
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      #calendar a {
+        color: #940101;
+      }
+
+      #calendar a:hover {
+        color: #630606;
+      }
+
+      #calendar button.fc-button {
+        border-width: 2px;
+      }
+
+      #calendar button.fc-button:hover {
+        color: var(--fc-button-bg-color);
+      }
+
+      @media (max-width: 480px) {
+        #calendar {
+          min-height: 118vh; /* arbitrary based on manual inspection for improved mobile view */
+        }
+
+        #calendar button.fc-button {
+          font-size: 0.75rem;
+        }
+      }
+
+      #calendar .fc-today-button {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    </style>
+  </header>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.8/index.global.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const calendarElement = document.getElementById("calendar");
+      const calendar = new FullCalendar.Calendar(calendarElement, {
+        plugins: [FullCalendar.GoogleCalendar.default],
+        googleCalendarApiKey: "AIzaSyDy_d5FDT496fiQ2wlofogq4a9QCM_P-UI",
+        events: {
+          googleCalendarId: "hello@stannacolumbia.org",
+        },
+        views: {
+          dayGrid: {
+            titleFormat: { month: "short", year: "numeric" },
+          },
+        },
+      });
+
+      calendar.render();
+    });
+  </script>
+  <body>
+    <div id="calendar" />
+  </body>
+</html>
